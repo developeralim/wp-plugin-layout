@@ -54,6 +54,9 @@ class App {
 		register_activation_hook(__FILE__,[$this,'activate']);
 		register_deactivation_hook(__FILE__,[$this,'deactivated']);
 		add_action('wp_enqueue_scripts',[ $this,'enqueue' ]);
+		
+		// run the application
+		$this->run();
 	}
 
 	/**
@@ -93,6 +96,17 @@ class App {
 		array_walk ( $scripts , function ( $path,$name ) {
 			wp_enqueue_script($name,plugins_url( $path,__FILE__),[],self::PLUGIN_VERSIONS,true);
 		});
+	}
+	
+	
+	/**
+	 * Run the application
+	 * @param null no params
+	 * @return void nothing to return
+	 */
+	private function run ( ) : void  
+	{	
+		
 	}
 	
 }
